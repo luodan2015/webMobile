@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
 <head>
     <meta charset="UTF-8">
     <meta id="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -8,10 +8,11 @@
         .reset{
             padding: 0;
             color: #333333;
-            max-width: 720px;
-            min-width: 320px;
+            /*max-width: 720px;*/
+            /*min-width: 320px;*/
             margin: 0 auto;
             position: relative;
+            font-size: 1rem;
         }
         .common-padding{
             padding: 40px 30px ;
@@ -64,25 +65,26 @@
             border: 1px solid #31b482;
             border-radius: 4px;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 1.2rem;
         }
         .light-small{
             color: #c3c3c3;
-            font-size: 12px;
+            /*font-size: 12px;*/
         }
         .red-bigger{
-            font-size: 20px;
+            font-size: 1.5rem;
             color: #ec584d;
-            position: relative;
+            position: absolute;
+            right: 3rem;
+            bottom: 37px;
         }
         .font-gray{
             color: #b2b2b2;
             margin-bottom: 25px;
         }
-
     </style>
 </head>
-<body class="reset">
+<body class="reset" id="body">
 <section class="common-padding">
     <div class="group">物流单号：HS938953WU3232</div>
     <div class="c-orange">发货时间：2016年01月15日</div>
@@ -124,7 +126,7 @@
     <div class="clear-float"></div>
 </section>
 <div style="padding-left: 30px"><div class="line-gray"></div></div>
-<section class="common-padding">
+<section class="common-padding" style="position: relative">
     <div class="left">总计</div>
     <div class="right"><span class="red-bigger">5.0</span>元</div>
     <div class="clear-float"></div>
@@ -136,5 +138,25 @@
     <div class="font-gray" style="margin-bottom: 0">付款时间：2016-01-09 17:30</div>
 </section>
 <div class="line-gray-bigger" style="height: 87px"></div>
+
+<script>
+    function adapt() {
+        var width = window.innerWidth;
+        console.log(width);
+        if(width < 320){
+            width = 320;
+        }
+        if(width > 720){
+            width = 720;
+        }
+        console.log(width);
+        document.getElementById('body').style.width = width + 'px';
+        document.getElementById('html').style.fontSize = (width / 720) * 20 + 'px';
+    }
+
+    window.onresize = function () {
+        adapt();
+    }
+</script>
 </body>
 </html>
